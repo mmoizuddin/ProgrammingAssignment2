@@ -2,13 +2,18 @@
 ## is to cache potentially time-consuming computations rather than compute it repeatedly,
 ## such as matrix inversion
 ## e.g.
-## > a <- makeCacheMatrix(matrix(1:4,2))  -- matrix to be inversed
-## > b <- cacheSolve(a) -- if inverse for the matrix is loaded in memory
-##                         then return the message otherwise compute it
-## > b -- result inverse matrix
+## > a <- makeCacheMatrix(matrix(1:4,2))        -- matrix to be inversed
+## > b <- cacheSolve(a)                         -- if inverse for the matrix is loaded in memory
+##                                                 then return the message otherwise compute it
+## > b                                          -- result inverse matrix
 #######################################################################################
 ##
-## This function creates a special "matrix" object that can cache its inverse.
+## This function creates a matrix that can cache its inverse.
+## The function returns a list of funtions, cached in memory:
+## "set" <-- set the value of the matrix
+## "get" <-- get the value of the matrix
+## "setsolve" <-- set the value of the inverse
+## "getsolve" <-- get the value of the inverse
 ##
 makeCacheMatrix <- function(x = matrix()) {
         m <- NULL
@@ -27,9 +32,8 @@ makeCacheMatrix <- function(x = matrix()) {
 #######################################################################################
 ## Write a short comment describing this function
 ##
-## This function computes the inverse of the special "matrix" returned by makeCacheMatrix above. 
-## If the inverse has already been calculated (and the matrix has not changed), 
-## then the cachesolve should retrieve the inverse from the cache.
+## This function checks if the inverse is aleady been calculated for the same matrix 
+## it returns the inverse from memory. Otherwise, sets the value of the inverse using "setsolve" function
 ##
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
