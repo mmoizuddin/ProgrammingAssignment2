@@ -30,7 +30,6 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 #######################################################################################
-## Write a short comment describing this function
 ##
 ## This function checks if the inverse is aleady been calculated for the same matrix 
 ## it returns the inverse from memory. Otherwise, sets the value of the inverse using "setsolve" function
